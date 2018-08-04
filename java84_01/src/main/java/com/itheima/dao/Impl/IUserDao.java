@@ -18,6 +18,7 @@ public class IUserDao implements UserDao {
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("添加数据失败");
+			System.out.println("one更新了...");
         }
 
     }
