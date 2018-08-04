@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--数据源-->
+    <bean id="driverq" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driver" value="jdbc:mysql:///mybatis?characterEncoding=utf8"></property>
+    </bean>
+
+    <!--jdbcTemplte对象-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="driverq"></property>
+    </bean>
+    <bean id="IUserDao" class="com.itheima.dao.Impl.IUserDao">
+        <property name="jdbcTemplate" ref="jdbcTemplate"></property>
+    </bean>
+    <bean id="IUserService" class="com.itheima.service.Impl.IUserService">
+        <property name="userDao" ref="IUserDao"></property>
+    </bean>
+
+
+
+</beans>
